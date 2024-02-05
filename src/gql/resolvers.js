@@ -21,22 +21,53 @@ export const resolvers = {
       return db.reviews.find((review) => review.id === id);
     },
   },
+  Mutation: {
+    addGame(_, args) {
+      let game = {
+        id: Math.floor(Math.random() + 10000).toString(),
+        ...args.game,
+      };
+      db.games.push(game);
+
+      return game;
+    },
+    updateGame(_, args) {
+      let gameToUpdate;
+      let updatedGames = db.games.map((game) => {
+        if (game.id === args.id) {
+          gameToUpdate = {
+            ...game,
+            ...args.data,
+          };
+        }
+        return gameToUpdate;
+      });
+      db.games = updatedGames;
+
+      return gameToUpdate;
+    },
+    deleteGame(_, { id }) {
+      db.games = db.games.filter((game) => game.id !== id);
+
+      return db.games;
+    },
+  },
   Game: {
-    reviews({id}) {
+    reviews({ id }) {
       return db.reviews.filter((review) => review.game_id === id);
-    }
+    },
   },
   Author: {
-    reviews({id}) {
+    reviews({ id }) {
       return db.reviews.filter((review) => review.author_id === id);
-    }
+    },
   },
   Review: {
-    game({game_id}) {
+    game({ game_id }) {
       return db.games.find((game) => game.id === game_id);
     },
-    author({author_id}) {
+    author({ author_id }) {
       return db.authors.find((author) => author.id === author_id);
-    }
+    },
   },
 };
