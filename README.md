@@ -4,35 +4,33 @@ Here, a file system was used as a database but any database can ne used.
 
 ## Query Sample
 ```
-query ExampleQuery($authorId: ID!) {
+query ExampleQuery {
   authors {
-    id
+    name
+    verified
     reviews {
-      id
       rating
+      content
     }
   }
   games {
-    id
+    title
+    platform
     reviews {
-      id
       rating
+      content
     }
   }
   reviews {
-    id
+    rating
+    content
     game {
-      id
       platform
     }
     author {
       id
       name
     }
-  }
-  author(id: 2) {
-    id
-    name
   }
 }
 ```
@@ -43,67 +41,37 @@ query ExampleQuery($authorId: ID!) {
   "data": {
     "authors": [
       {
-        "id": "1",
+        "name": "Charles",
+        "verified": true,
         "reviews": [
           {
-            "id": "2",
-            "rating": 2
+            "rating": 2,
+            "content": "Was good"
           }
         ]
       },
-      {
-        "id": "2",
-        "reviews": [
-          {
-            "id": "3",
-            "rating": 4
-          }
-        ]
-      },
-      {
-        "id": "3",
-        "reviews": [
-          {
-            "id": "1",
-            "rating": 5
-          }
-        ]
-      }
+      ...
     ],
     "games": [
       {
-        "id": "1",
+        "title": "My title one",
+        "platform": [
+          "Switch"
+        ],
         "reviews": [
           {
-            "id": "1",
-            "rating": 5
+            "rating": 5,
+            "content": "I loved it"
           }
         ]
       },
-      {
-        "id": "2",
-        "reviews": [
-          {
-            "id": "3",
-            "rating": 4
-          }
-        ]
-      },
-      {
-        "id": "3",
-        "reviews": [
-          {
-            "id": "2",
-            "rating": 2
-          }
-        ]
-      }
+      ...
     ],
     "reviews": [
       {
-        "id": "1",
+        "rating": 5,
+        "content": "I loved it",
         "game": {
-          "id": "1",
           "platform": [
             "Switch"
           ]
@@ -113,37 +81,38 @@ query ExampleQuery($authorId: ID!) {
           "name": "Angela"
         }
       },
-      {
-        "id": "2",
-        "game": {
-          "id": "3",
-          "platform": [
-            "Netflix, AZE",
-            "Youtube"
-          ]
-        },
-        "author": {
-          "id": "1",
-          "name": "Charles"
-        }
-      },
-      {
-        "id": "3",
-        "game": {
-          "id": "2",
-          "platform": [
-            "KCC, Switch"
-          ]
-        },
-        "author": {
-          "id": "2",
-          "name": "Andrew"
-        }
-      }
-    ],
+      ...
+    ]
+  }
+}
+```
+
+```
+query SingleQuery ($id: ID!){
+  author(id: $id) {
+    name
+    verified
+    reviews {
+      rating
+      content
+    }
+  }
+}
+```
+
+Response 
+```
+{
+  "data": {
     "author": {
-      "id": "2",
-      "name": "Andrew"
+      "name": "Charles",
+      "verified": true,
+      "reviews": [
+        {
+          "rating": 2,
+          "content": "Was good"
+        }
+      ]
     }
   }
 }

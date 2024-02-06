@@ -51,6 +51,36 @@ export const resolvers = {
 
       return db.games;
     },
+
+    addAuthor(_, args) {
+      let author = {
+        id: Math.floor(Math.random() + 10000).toString(),
+        ...args.author,
+      };
+      db.authors.push(author);
+
+      return author;
+    },
+    updateAuthor(_, args) {
+      let authorToUpdate;
+      let updatedAuthors = db.authors.map((author) => {
+        if (author.id === args.id) {
+          authorToUpdate = {
+            ...author,
+            ...args.data,
+          };
+        }
+        return authorToUpdate;
+      });
+      db.games = updatedAuthors;
+
+      return authorToUpdate;
+    },
+    deleteAuthor(_, { id }) {
+      db.authors = db.authors.filter((author) => author.id !== id);
+
+      return db.authors;
+    },
   },
   Game: {
     reviews({ id }) {
