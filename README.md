@@ -1,8 +1,8 @@
 # Description
-This is a simple GraphQL PI server that allows a user to access data of a game which include `Game`, `Author` and `Reviews`.   
-Here, a file system was used as a database but any database can ne used. 
+This is a simple GraphQL API server that allows a user to access associated data of a game which include `Game`, `Author` and `Reviews`.   
+Here, a file system was used as a database to keep it simple and focus on learning GraphQL but any database of choice can be used. 
 
-## Query Sample
+## Query Samples
 ```
 query ExampleQuery {
   authors {
@@ -35,7 +35,7 @@ query ExampleQuery {
 }
 ```
 
-## Query Result
+### Query Result
 ```
 {
   "data": {
@@ -99,8 +99,7 @@ query SingleQuery ($id: ID!){
   }
 }
 ```
-
-Response 
+### Query Result
 ```
 {
   "data": {
@@ -113,6 +112,31 @@ Response
           "content": "Was good"
         }
       ]
+    }
+  }
+}
+```
+
+```
+mutation SingleMutation ($author: AddAuthorInput!){
+  addAuthor(author: $author) {
+    name
+    verified
+    reviews {
+      rating
+      content
+    }
+  }
+}
+```
+### Query Result
+```
+{
+  "data": {
+    "addAuthor": {
+      "name": "John Doe",
+      "verified": true,
+      "reviews": []
     }
   }
 }
