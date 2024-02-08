@@ -8,6 +8,10 @@ Clone the repository and cd into the project directory
 Run `npm install` or `yarn install` to install all project dependencies    
 Run `npm start` or `yarn start` to start local server which will run on http://localhost:4000/
 
+##
+To run test, run:  
+`NODE_OPTIONS="$NODE_OPTIONS --experimental-vm-modules" npx jest`
+
 ## Usage
 
 ### Query Samples

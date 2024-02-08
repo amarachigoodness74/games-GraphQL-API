@@ -10,7 +10,7 @@ const server = new ApolloServer({
   resolvers
 });
 
-const { url } = await startStandaloneServer(server, {
+export const { url } = await startStandaloneServer(server, {
   listen: { port: PORT },
 });
 
