@@ -89,7 +89,7 @@ mutation SingleMutation ($author: AddAuthorInput!){
   }
 }
 ```
-#### Query Result
+#### Mutation Result
 ```
 {
   "data": {
