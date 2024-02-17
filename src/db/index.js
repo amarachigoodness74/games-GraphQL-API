@@ -1,7 +1,7 @@
 let games = [
-  { id: "1", title: "My title one", platform: ["Switch"] },
-  { id: "2", title: "My title two", platform: ["KCC, Switch"] },
-  { id: "3", title: "My title three", platform: ["Netflix, AZE", "Youtube"] },
+  { id: "1", title: "Game plan", platform: ["Switch"] },
+  { id: "2", title: "Catch the dog", platform: ["KCC, Switch"] },
+  { id: "3", title: "Shoot up", platform: ["Netflix, AZE", "Youtube"] },
 ];
 
 let authors = [

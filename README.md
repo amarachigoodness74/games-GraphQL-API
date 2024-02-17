@@ -47,58 +47,6 @@ query ExampleQuery {
 }
 ```
 
-#### Query Result
-```
-{
-  "data": {
-    "authors": [
-      {
-        "name": "Charles",
-        "verified": true,
-        "reviews": [
-          {
-            "rating": 2,
-            "content": "Was good"
-          }
-        ]
-      },
-      ...
-    ],
-    "games": [
-      {
-        "title": "My title one",
-        "platform": [
-          "Switch"
-        ],
-        "reviews": [
-          {
-            "rating": 5,
-            "content": "I loved it"
-          }
-        ]
-      },
-      ...
-    ],
-    "reviews": [
-      {
-        "rating": 5,
-        "content": "I loved it",
-        "game": {
-          "platform": [
-            "Switch"
-          ]
-        },
-        "author": {
-          "id": "3",
-          "name": "Angela"
-        }
-      },
-      ...
-    ]
-  }
-}
-```
-
 ```
 query SingleQuery ($id: ID!){
   author(id: $id) {
