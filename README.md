@@ -6,7 +6,7 @@ Here, a file system was used as a database to keep it simple and focus on learni
 Fork this repo to have the repository in your GitHub account  
 Clone the repository and cd into the project directory  
 Run `npm install` or `yarn install` to install all project dependencies    
-Run `npm start` or `yarn start` to start local server which will run on http://localhost:4000/
+Run `npm start` or `yarn start` to start local server which will run on http://localhost:4000/  
 
 ##
 To run test, run:  
